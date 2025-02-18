@@ -10,10 +10,10 @@ import { BooksModule } from './books/books.module';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forRoot("mongodb://localhost:27017/books"),
+    MongooseModule.forRoot("mongodb://127.0.0.1:27017/books"),
     BooksModule
   ],
-  controllers: [AppController],
+  controllers: [AppController], 
   providers: [AppService],
 })
 export class AppModule {}

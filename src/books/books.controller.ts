@@ -31,7 +31,8 @@ export class BooksController{
     }
 
     @Delete(':id')
-    public delete(@Param() {id}): void {
-        this.booksService.delete(id)
+    public delete(@Param() {id}): QueryWithHelpers<HydratedDocument<BookDocument, {}, {}> | null, HydratedDocument<BookDocument, {}, {}>, {}, BookDocument> {
+        return this.booksService.delete(id)
+        
     }
 }

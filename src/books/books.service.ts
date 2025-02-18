@@ -27,7 +27,8 @@ export class BooksService{
 
     }
 
-    public delete(id):void{
-        this.BookModel.findByIdAndDelete({_id:id})
+    public delete(id): QueryWithHelpers<HydratedDocument<BookDocument, {}, {}> | null, HydratedDocument<BookDocument, {}, {}>, {}, BookDocument> {
+        return this.BookModel.findByIdAndDelete({_id:id})
+        
     }
 }
