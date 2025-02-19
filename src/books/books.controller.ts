@@ -8,6 +8,7 @@ import { CreateBookDto } from './interfaces/dto/create-book';
 import { UpdateBookDto } from './interfaces/dto/update-book';
 
 
+
 @Controller('books')
 export class BooksController{
     constructor(private readonly booksService: BooksService){}
@@ -24,14 +25,14 @@ export class BooksController{
 
     @Put(':id')
     public update(
-        @Param() {id} ,
+        @Param("id") id:string ,
         @Body() body: UpdateBookDto
     ): Promise<BookDocument|null>{
         return this.booksService.update(id,body)
     }
 
     @Delete(':id')
-    public delete(@Param() {id}): QueryWithHelpers<HydratedDocument<BookDocument, {}, {}> | null, HydratedDocument<BookDocument, {}, {}>, {}, BookDocument> {
+    public delete(@Param("id") id:string): QueryWithHelpers<HydratedDocument<BookDocument, {}, {}> | null, HydratedDocument<BookDocument, {}, {}>, {}, BookDocument> {
         return this.booksService.delete(id)
         
     }

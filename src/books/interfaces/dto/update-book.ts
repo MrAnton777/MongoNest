@@ -1,5 +1,3 @@
-export interface UpdateBookDto {
-    title: string;
-    description: string;
-    author:string
-}
+import { CreateBookDto } from "./create-book";
+
+export interface UpdateBookDto extends Partial<CreateBookDto> {}
