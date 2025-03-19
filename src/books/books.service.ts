@@ -11,16 +11,15 @@ import { UpdateBookDto } from './interfaces/dto/update-book';
 export class BooksService{
     constructor(
         @InjectModel(Book.name) private BookModel: Model<BookDocument>,
-        @InjectConnection() private connection: Connection,
     ){}
 
     public getAll(): Promise<BookDocument[]>{
-        return this.BookModel.find().exec()
+        return this.BookModel.find()
     }
 
     public create(body:CreateBookDto):Promise<BookDocument>{
-        const book = new this.BookModel(body)
-        return book.save()
+        const book = this.BookModel.create(body)
+        return book
     }
 
     public update(id:string,body:UpdateBookDto): Promise<BookDocument| null>{
